@@ -32,4 +32,11 @@ describe('DateRange ValueObject', () => {
         expect(range1.overlaps(range2)).toBe(true);
         expect(range1.overlaps(range3)).toBe(false);
     });
+
+
+    it('should throw an error if the start date is equal to the end date', () => {
+        expect(() => {
+            new DateRange(new Date('2024-12-20'), new Date('2024-12-20'))
+        }).toThrow('The end date must be after the start date');
+    })
 });
