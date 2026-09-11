@@ -67,6 +67,9 @@ export class Property {
     calculateTotalPrice(dateRange: DateRange): number {
         const totalNights = dateRange.getTotalNights();
         let totalPrice = totalNights * this.price;
+        if (totalNights > 7) {
+            totalPrice *= 0.8; // Apply 20% discount
+        }
         return totalPrice;
     }
 }
