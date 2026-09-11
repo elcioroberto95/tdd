@@ -1,3 +1,5 @@
+import { DateRange } from "../value_objects/date_range";
+
 export class Property {
     public id: string;
     public name: string
@@ -61,5 +63,10 @@ export class Property {
     }
     getMaxGuests(): number {
         return this.maxGuests;
+    }
+    calculateTotalPrice(dateRange: DateRange): number {
+        const totalNights = dateRange.getTotalNights();
+        let totalPrice = totalNights * this.price;
+        return totalPrice;
     }
 }

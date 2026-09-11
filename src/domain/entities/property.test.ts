@@ -1,4 +1,5 @@
 import { Property } from './property';
+import { DateRange } from '../value_objects/date_range';
 
 describe('Property Entity', () => {
 
@@ -57,4 +58,11 @@ describe('Property Entity', () => {
             () => new Property('property-1', 'Property Name', 'Property Description', 4, -100)
         ).toThrow('Price must be a positive number');
     });
-});
+
+    it('should not apply a discount to stays of fewer than 7 nights.', () => {
+        const property = new Property('property-1', 'Property Name', 'Property Description', 4, 400);
+        const dateRange = new DateRange(new Date('2024-06-01'), new Date('2024-06-05')); // 4 nights
+        const totalPrice = property.calculateTotalPrice(dateRange);
+        expect(totalPrice).toBe(1600); // 4 nights * $400 per night
+    });
+})
