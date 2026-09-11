@@ -2,14 +2,18 @@ export class DateRange {
     private readonly startDate: Date;
     private readonly endDate: Date;
     constructor(startDate: Date, endDate: Date) {
-        if (endDate < startDate) {
-            throw new Error('The end date must be after the start date');
-        }
-        if(endDate.getTime() === startDate.getTime()) {
-            throw new Error('The start date and end date cannot be the same');
-        }
+
         this.startDate = startDate;
         this.endDate = endDate;
+        this.validateDates();
+    }
+    validateDates(): void {
+        if (this.endDate < this.startDate) {
+            throw new Error('The end date must be after the start date');
+        }
+        if (this.endDate.getTime() === this.startDate.getTime()) {
+            throw new Error('The start date and end date cannot be the same');
+        }
     }
     getStartDate(): Date {
         return this.startDate;
@@ -20,7 +24,7 @@ export class DateRange {
 
     getTotalNights(): number {
         const diffTime = Math.abs(this.endDate.getTime() - this.startDate.getTime());
-        return Math.ceil(diffTime / (1000 * 3600 * 24)); 
+        return Math.ceil(diffTime / (1000 * 3600 * 24));
     }
 
 
