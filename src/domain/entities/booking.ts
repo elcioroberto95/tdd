@@ -7,8 +7,11 @@ export class Booking {
     private readonly user: User;
     private readonly dateRange: DateRange;
     private readonly guestCount: number;
+    private readonly status: 'CONFIRMED' | 'CANCELLED' = 'CONFIRMED';
 
     constructor(id: string, property: Property, user: User, dateRange: DateRange, guestCount: number = 0) {
+
+
         this.id = id;
         this.property = property;
         this.user = user;
@@ -30,5 +33,8 @@ export class Booking {
     }
     getGuestCount(): number {
         return this.guestCount;
+    }
+    getStatus(): 'CONFIRMED' | 'CANCELLED' {
+        return this.status;
     }
 }

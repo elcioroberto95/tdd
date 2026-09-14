@@ -19,4 +19,13 @@ describe('booking Entity', () => {
         expect(booking.getDateRange()).toBe(dateRange);
         expect(booking.getGuestCount()).toBe(2);
     })
+
+
+    it('should check   property availability', () => {
+        const property = new Property('property-1', 'Property Name', 'Property Description', 4, 400);
+        const startDate = new Date('2024-06-01');
+        const endDate = new Date('2024-06-05');
+        const dateRange = new DateRange(startDate, endDate);
+        expect(property.isAvailable(dateRange)).toBe(true);
+    })
 })
