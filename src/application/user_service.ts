@@ -1,8 +1,8 @@
-import { User } from '../entities/user';
-import { FakeUserRepository } from '../infrastracture/FakeUserRepository';
+import { User } from '../domain/entities/user';
+import { UserRepository } from '../domain/repositories/user_repository';
 export class UserService {
-    public userRepository: FakeUserRepository;
-    constructor(userRepository: FakeUserRepository) {
+    public userRepository: UserRepository;
+    constructor(userRepository: UserRepository) {
         this.userRepository = userRepository;
     }
 

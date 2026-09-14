@@ -1,4 +1,4 @@
-import { FakeUserRepository } from '../infrastracture/FakeUserRepository';
+import { FakeUserRepository } from '../infrastracture/repositories/FakeUserRepository';
 import { UserService } from './user_service';
 
 

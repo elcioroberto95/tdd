@@ -1,5 +1,6 @@
 import { User } from "../../domain/entities/user";
-export class FakeUserRepository {
+import { UserRepository } from "../../domain/repositories/user_repository";
+export class FakeUserRepository implements UserRepository {
     private users: { [id: string]: User } = {
         '1': new User('1', 'John Doe', 'john@example'),
         '2': new User('2', 'Jane Smith', 'jane@example')
