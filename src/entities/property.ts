@@ -79,7 +79,7 @@ export class Property {
     }
 
     addBooking(booking: Booking): void {
-        this.bookings
+        this.bookings.push(booking);
     }
 
     getBookings(): Booking[] {

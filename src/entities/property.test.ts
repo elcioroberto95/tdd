@@ -66,10 +66,18 @@ describe('Property Entity', () => {
         expect(totalPrice).toBe(1600); // 4 nights * $400 per night
     });
 
-      it('should  apply a discount to stays of longer than 7 nights.', () => {
+    it('should  apply a discount to stays of longer than 7 nights.', () => {
         const property = new Property('property-1', 'Property Name', 'Property Description', 4, 400);
         const dateRange = new DateRange(new Date('2024-06-01'), new Date('2024-06-08')); // 8 nights
         const totalPrice = property.calculateTotalPrice(dateRange);
         expect(totalPrice).toBe(2800); // 8 nights * $400 per night with discount
     });
+
+    it('should check   property availability', () => {
+        const property = new Property('property-1', 'Property Name', 'Property Description', 4, 400);
+        const startDate = new Date('2024-06-01');
+        const endDate = new Date('2024-06-05');
+        const dateRange = new DateRange(startDate, endDate);
+        expect(property.isAvailable(dateRange)).toBe(true);
+    })
 })

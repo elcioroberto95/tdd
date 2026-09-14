@@ -7,7 +7,7 @@ export class Booking {
     private readonly user: User;
     private readonly dateRange: DateRange;
     private readonly guestCount: number;
-    private readonly status: 'CONFIRMED' | 'CANCELLED' = 'CONFIRMED';
+    private status: 'CONFIRMED' | 'CANCELLED' = 'CONFIRMED';
 
     constructor(id: string, property: Property, user: User, dateRange: DateRange, guestCount: number = 0) {
 
@@ -17,6 +17,8 @@ export class Booking {
         this.user = user;
         this.dateRange = dateRange;
         this.guestCount = guestCount;
+        this.validateGuestCount();
+        property.addBooking(this);
     }
 
     getId(): string {
@@ -36,5 +38,20 @@ export class Booking {
     }
     getStatus(): 'CONFIRMED' | 'CANCELLED' {
         return this.status;
+    }
+
+    validateGuestCount(): void {
+        if (this.guestCount <= 0) {
+            throw new Error('Guest count must be a positive number');
+        }
+        if (this.guestCount > this.property.maxGuests) {
+            throw new Error('Guest count cannot exceed max guests');
+        }
+    }
+
+
+
+    cancel(currentDate: Date): void {
+        this.status = 'CANCELLED';
     }
 }
