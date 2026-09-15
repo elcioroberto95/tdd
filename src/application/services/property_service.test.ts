@@ -1,6 +1,6 @@
-import { FakePropertyRepository } from '../infrastracture/repositories/FakePropertyRepository';
-import { PropertyService } from './property_service';
-import { Property } from '../domain/entities/property';
+import { FakePropertyRepository } from '../../infrastracture/repositories/FakePropertyRepository';
+import { PropertyService } from '../services/property_service';
+import { Property } from '../../domain/entities/property';
 
 
 
